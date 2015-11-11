@@ -33,6 +33,7 @@ app.directive('ngSocialButtons', ['$compile', '$q', '$parse', '$http', '$locatio
                     if (options.counter) {
                         ctrl.getCount(scope.options).then(function (count) {
                             scope.count = count;
+                            scope.hasCount = count == 0 || count;
                         });
                     }
                 };
@@ -153,7 +154,7 @@ app.directive('ngSocialFacebook', ['$parse', function ($parse) {
     '<span class="ng-social-icon"></span>' +
     '<span class="ng-social-text" ng-transclude></span>' +
     '</a>' +
-    '<span ng-show="count" class="ng-social-counter">{{ count }}</span>' +
+    '<span ng-show="hasCount" class="ng-social-counter">{{ count }}</span>' +
     '</li>',
     link: function (scope, element, attrs, ctrl) {
       element.addClass('ng-social-facebook');
@@ -206,7 +207,7 @@ app.directive('ngSocialTwitter', ['$parse', function ($parse) {
                         <span class="ng-social-icon"></span> \
                         <span class="ng-social-text" ng-transclude></span> \
                     </a> \
-                    <span ng-show="count" class="ng-social-counter">{{ count }}</span> \
+                    <span ng-show="hasCount" class="ng-social-counter">{{ count }}</span> \
                    </li>',
     link: function (scope, element, attrs, ctrl) {
       element.addClass('ng-social-twitter');
@@ -271,7 +272,7 @@ app.directive('ngSocialGooglePlus', ['$parse', function ($parse) {
                         <span class="ng-social-icon"></span> \
                         <span class="ng-social-text" ng-transclude></span> \
                     </a> \
-                    <span ng-show="count" class="ng-social-counter">{{ count }}</span> \
+                    <span ng-show="hasCount" class="ng-social-counter">{{ count }}</span> \
                    </li>',
     link: function (scope, element, attrs, ctrl) {
       element.addClass('ng-social-google-plus');
@@ -331,7 +332,7 @@ app.directive('ngSocialVk', ['$parse', function ($parse) {
                         <span class="ng-social-icon"></span> \
                         <span class="ng-social-text" ng-transclude></span> \
                     </a> \
-                    <span ng-show="count" class="ng-social-counter">{{ count }}</span> \
+                    <span ng-show="hasCount" class="ng-social-counter">{{ count }}</span> \
                    </li>',
     link: function (scope, element, attrs, ctrl) {
       element.addClass('ng-social-vk');
@@ -392,7 +393,7 @@ angular.module("ngSocial").directive('ngSocialOdnoklassniki', ['$parse', functio
                         <span class="ng-social-icon"></span> \
                         <span class="ng-social-text" ng-transclude></span> \
                     </a> \
-                    <span ng-show="count" class="ng-social-counter">{{ count }}</span> \
+                    <span ng-show="hasCount" class="ng-social-counter">{{ count }}</span> \
                    </li>',
     link: function (scope, element, attrs, ctrl) {
       element.addClass('ng-social-odnoklassniki');
@@ -438,7 +439,7 @@ angular.module("ngSocial").directive('ngSocialMailru', ['$parse', function ($par
                         <span class="ng-social-icon"></span> \
                         <span class="ng-social-text" ng-transclude></span> \
                     </a> \
-                    <span ng-show="count" class="ng-social-counter">{{ count }}</span> \
+                    <span ng-show="hasCount" class="ng-social-counter">{{ count }}</span> \
                    </li>',
     link: function (scope, element, attrs, ctrl) {
       element.addClass('ng-social-mailru');
@@ -483,7 +484,7 @@ angular.module("ngSocial").directive('ngSocialPinterest', ['$parse', function ($
                         <span class="ng-social-icon"></span> \
                         <span class="ng-social-text" ng-transclude></span> \
                     </a> \
-                    <span ng-show="count" class="ng-social-counter">{{ count }}</span> \
+                    <span ng-show="hasCount" class="ng-social-counter">{{ count }}</span> \
                    </li>',
     link: function (scope, element, attrs, ctrl) {
       element.addClass('ng-social-pinterest');
@@ -525,7 +526,7 @@ angular.module("ngSocial").directive('ngSocialGithubForks', function () {
                         <span class="ng-social-icon"></span> \
                         <span class="ng-social-text" ng-transclude></span> \
                     </a> \
-                    <span ng-show="count" class="ng-social-counter">{{ count }}</span> \
+                    <span ng-show="hasCount" class="ng-social-counter">{{ count }}</span> \
                    </li>',
     link: function (scope, element, attrs, ctrl) {
       element.addClass('ng-social-github ng-social-github-forks');
@@ -566,7 +567,7 @@ angular.module("ngSocial").directive('ngSocialGithub', function () {
                         <span class="ng-social-icon"></span> \
                         <span class="ng-social-text" ng-transclude></span> \
                     </a> \
-                    <span ng-show="count" class="ng-social-counter">{{ count }}</span> \
+                    <span ng-show="hasCount" class="ng-social-counter">{{ count }}</span> \
                    </li>',
     link: function (scope, element, attrs, ctrl) {
       element.addClass('ng-social-github');
@@ -615,7 +616,7 @@ app.directive('ngSocialStumbleupon', ['$parse', function ($parse) {
                         <span class="ng-social-icon"></span> \
                         <span class="ng-social-text" ng-transclude></span> \
                     </a> \
-                    <span ng-show="count" class="ng-social-counter">{{ count }}</span> \
+                    <span ng-show="hasCount" class="ng-social-counter">{{ count }}</span> \
                    </li>',
         link: function (scope, element, attrs, ctrl) {
             element.addClass('ng-social-google-plus');
@@ -713,7 +714,7 @@ app.directive('ngSocialLinkedin', ['$parse', function($parse) {
                         <span class="ng-social-icon"></span> \
                         <span class="ng-social-text" ng-transclude></span> \
                     </a> \
-                    <span ng-show="count" class="ng-social-counter">{{ count }}</span> \
+                    <span ng-show="hasCount" class="ng-social-counter">{{ count }}</span> \
                    </li>',
         link: function(scope, element, attrs, ctrl) {
             element.addClass('ng-social-linkedin');
