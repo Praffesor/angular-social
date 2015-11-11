@@ -33,6 +33,7 @@ app.directive('ngSocialButtons', ['$compile', '$q', '$parse', '$http', '$locatio
                     if (options.counter) {
                         ctrl.getCount(scope.options).then(function (count) {
                             scope.count = count;
+                            scope.hasCount = count == 0 || count;
                         });
                     }
                 };

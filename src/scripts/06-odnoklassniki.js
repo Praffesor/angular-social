@@ -39,7 +39,7 @@ angular.module("ngSocial").directive('ngSocialOdnoklassniki', ['$parse', functio
                         <span class="ng-social-icon"></span> \
                         <span class="ng-social-text" ng-transclude></span> \
                     </a> \
-                    <span ng-show="count" class="ng-social-counter">{{ count }}</span> \
+                    <span ng-show="hasCount" class="ng-social-counter">{{ count }}</span> \
                    </li>',
     link: function (scope, element, attrs, ctrl) {
       element.addClass('ng-social-odnoklassniki');
