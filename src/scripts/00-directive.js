@@ -30,10 +30,13 @@ app.directive('ngSocialButtons', ['$compile', '$q', '$parse', '$http', '$locatio
                     return $scope.url || $location.absUrl();
                 }, ctrl = this;
                 this.init = function (scope, element, options) {
+                    var setCount = function(count) {
+                        scope.count = count - 0 || 0;
+                        scope.hasCount = scope.count == 0 || scope.count;
+                    };
                     if (options.counter) {
-                        ctrl.getCount(scope.options).then(function (count) {
-                            scope.count = count;
-                            scope.hasCount = count == 0 || count;
+                        ctrl.getCount(scope.options).then(setCount, function() {
+                            setCount(0);
                         });
                     }
                 };
@@ -103,7 +106,7 @@ app.directive('ngSocialButtons', ['$compile', '$q', '$parse', '$http', '$locatio
                                 } else {
                                     def.resolve(res);
                                 }
-                            });
+                            }).error(def.reject);
                         }
                     }
                     return def.promise;
